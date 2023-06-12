@@ -12,8 +12,8 @@ node {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                       
-                        sh "git config user.email kumarimanishaamp@gmail.com"
-                        sh "git config user.name kumari234"
+                        sh "git config --global user.email kumarimanishaamp@gmail.com"
+                        sh "git config --global user.name kumari234"
                       
                         sh "cat deployment.yaml"
                         sh "sed -i 's+kumarijessie/packages.*+kumarijessie/packages:${DOCKERTAG}+g' deployment.yaml"
